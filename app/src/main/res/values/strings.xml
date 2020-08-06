@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lernen</string>
+    <string name="logo_tv">Lernen Sie Deutsch</string>
+    <string name="add_new_word_button_string">Додати</string>
+    <string name="all_words_list_button_string">Всі слова</string>
+    <string name="learn_button_string">Вчити</string>
+</resources>
