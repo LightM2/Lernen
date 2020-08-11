@@ -8,5 +8,30 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.lernen.ui.main.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_addNewWordFragment"
+            app:destination="@id/addNewWordFragment"
+            app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_allWordsListFragment"
+            app:destination="@id/allWordsListFragment"
+            app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_learnFragment"
+            app:destination="@id/learnFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewWordFragment"
+        android:name="com.example.lernen.ui.addNewWord.AddNewWordFragment"
+        android:label="AddNewWordFragment" />
+    <fragment
+        android:id="@+id/allWordsListFragment"
+        android:name="com.example.lernen.ui.allWordsList.AllWordsListFragment"
+        android:label="AllWordsListFragment" />
+    <fragment
+        android:id="@+id/learnFragment"
+        android:name="com.example.lernen.ui.learn.LearnFragment"
+        android:label="LearnFragment" />
 </navigation>

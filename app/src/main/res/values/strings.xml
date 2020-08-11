@@ -4,4 +4,7 @@
     <string name="add_new_word_button_string">Додати</string>
     <string name="all_words_list_button_string">Всі слова</string>
     <string name="learn_button_string">Вчити</string>
+    <string name="lesson_TIL_hint_string">Урок</string>
+    <string name="word_TIL_hint_string">Слово</string>
+    <string name="translation_TIL_hint_string">Переклад</string>
 </resources>

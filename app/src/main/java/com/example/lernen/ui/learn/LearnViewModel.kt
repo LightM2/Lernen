@@ -1,4 +1,4 @@
-package com.example.lernen.ui.main
+package com.example.lernen.ui.learn
 
 import android.util.Log
 import androidx.hilt.Assisted
@@ -6,8 +6,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
-
-class MainViewModel
+class LearnViewModel
 @ViewModelInject
 constructor(
         @Assisted private val savedStateHandle: SavedStateHandle
@@ -15,7 +14,7 @@ constructor(
 
     fun onClick() {
 
-        Log.d("MainViewModel", "Navigation mast work")
+        Log.d("LearnViewModel", "Navigation mast work")
     }
 
 }
