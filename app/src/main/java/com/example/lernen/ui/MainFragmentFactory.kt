@@ -2,6 +2,7 @@ package com.example.lernen.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
+import com.example.lernen.repository.MainRepository
 import com.example.lernen.ui.addNewWord.AddNewWordFragment
 import com.example.lernen.ui.allWordsList.AllWordsListFragment
 import com.example.lernen.ui.learn.LearnFragment
@@ -11,7 +12,9 @@ import javax.inject.Inject
 
 class MainFragmentFactory
 @Inject
-constructor(): FragmentFactory(){
+constructor(
+    private val mainRepository: MainRepository
+): FragmentFactory(){
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className){
@@ -20,7 +23,7 @@ constructor(): FragmentFactory(){
                 fragment
             }
             AddNewWordFragment::class.java.name -> {
-                val fragment = AddNewWordFragment()
+                val fragment = AddNewWordFragment(mainRepository)
                 fragment
             }
             AllWordsListFragment::class.java.name -> {

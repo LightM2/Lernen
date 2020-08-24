@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.viewModels
 import com.example.lernen.R
 import com.example.lernen.databinding.MainFragmentBinding
@@ -19,11 +17,6 @@ class MainFragment
 constructor() : Fragment(R.layout.main_fragment) {
 
     private lateinit var binding: MainFragmentBinding
-
-    private val viewModel: MainViewModel by viewModels()
-
-    @LayoutRes
-    fun getLayoutId(): Int = R.layout.main_fragment
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,8 +31,9 @@ constructor() : Fragment(R.layout.main_fragment) {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        binding.setVariable(BR.viewModel, viewModel)
+        val viewModel: MainViewModel by viewModels()
+        binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
+        binding.viewModel = viewModel
         return binding.root
     }
 
