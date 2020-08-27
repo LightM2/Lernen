@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lernen.repository.MainRepository
 import com.example.lernen.room.WordEntity
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Main
 
 class AddNewWordViewModel
 @ViewModelInject
@@ -20,12 +20,16 @@ constructor(
         @Assisted private val savedStateHandle: SavedStateHandle
 ): ViewModel(){
 
+    var newLesson = MutableLiveData<String>()
+    var newWord = MutableLiveData<String>()
+    var newTranslation = MutableLiveData<String>()
+
     fun addNewWord(){
         println("addNewWord")
         Log.d("AddNewWordViewModel", "addNewWord")
         Log.d("AddNewWordViewModel", "Lesson - ${newLesson.value}")
-        Log.d("AddNewWordViewModel", "Lesson - ${newWord.value}")
-        Log.d("AddNewWordViewModel", "Lesson - ${newTranslation.value}")
+        Log.d("AddNewWordViewModel", "Word - ${newWord.value}")
+        Log.d("AddNewWordViewModel", "Translation - ${newTranslation.value}")
         viewModelScope.launch {
             mainRepository.setWord(WordEntity(0, newLesson.value!!, newWord.value!!, newTranslation.value!!))
             Log.d("AddNewWordViewModel", "new word added")
@@ -34,9 +38,8 @@ constructor(
 
     }
 
-    var newLesson = MutableLiveData<String>()
-    var newWord = MutableLiveData<String>()
-    var newTranslation = MutableLiveData<String>()
+
+
 
 
 }

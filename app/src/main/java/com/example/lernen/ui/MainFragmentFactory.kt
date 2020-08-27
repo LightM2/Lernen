@@ -27,7 +27,7 @@ constructor(
                 fragment
             }
             AllWordsListFragment::class.java.name -> {
-                val fragment = AllWordsListFragment()
+                val fragment = AllWordsListFragment(mainRepository)
                 fragment
             }
             LearnFragment::class.java.name -> {
