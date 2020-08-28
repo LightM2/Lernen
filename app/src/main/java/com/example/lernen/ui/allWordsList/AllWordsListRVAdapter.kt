@@ -17,7 +17,6 @@ class AllWordsListRVAdapter(private val dataList: List<WordEntity>): RecyclerVie
         val data = dataList[position]
 
         holder.bind(
-                data.lesson,
                 data.word,
                 data.translation
         )

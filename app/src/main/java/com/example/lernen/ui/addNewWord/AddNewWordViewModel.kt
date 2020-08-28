@@ -21,7 +21,9 @@ constructor(
 ): ViewModel(){
 
     var newLesson = MutableLiveData<String>()
+
     var newWord = MutableLiveData<String>()
+
     var newTranslation = MutableLiveData<String>()
 
     fun addNewWord(){
@@ -31,7 +33,7 @@ constructor(
         Log.d("AddNewWordViewModel", "Word - ${newWord.value}")
         Log.d("AddNewWordViewModel", "Translation - ${newTranslation.value}")
         viewModelScope.launch {
-            mainRepository.setWord(WordEntity(0, newLesson.value!!, newWord.value!!, newTranslation.value!!))
+            mainRepository.setWord(WordEntity(0, newLesson.value!!.toInt(), newWord.value!!, newTranslation.value!!))
             Log.d("AddNewWordViewModel", "new word added")
 
         }

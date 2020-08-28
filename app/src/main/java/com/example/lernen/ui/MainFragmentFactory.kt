@@ -31,7 +31,7 @@ constructor(
                 fragment
             }
             LearnFragment::class.java.name -> {
-                val fragment = LearnFragment()
+                val fragment = LearnFragment(mainRepository)
                 fragment
             }
             else -> super.instantiate(classLoader, className)

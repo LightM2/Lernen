@@ -10,7 +10,7 @@ data class WordEntity(
     var id: Int,
 
     @ColumnInfo(name = "lesson")
-    var lesson: String,
+    var lesson: Int,
 
     @ColumnInfo(name = "word")
     var word: String,

@@ -3,6 +3,7 @@ package com.example.lernen.repository
 import android.util.Log
 import com.example.lernen.room.WordDao
 import com.example.lernen.room.WordEntity
+import java.util.*
 
 class MainRepository
 constructor(
@@ -31,5 +32,39 @@ constructor(
             Log.d("setWord", "Exception $e")
         }
 
+    }
+
+    suspend fun getMaxLesson(): Int?{
+        var maxLesson: Int? = null
+        try {
+            maxLesson = wordDao.getMaxLesson()
+            Log.d("getMaxLesson", "Success")
+        }catch (e: Exception){
+            Log.d("getMaxLesson", "Exception $e")
+        }
+
+        return maxLesson
+    }
+
+    suspend fun getAllLesson(): SortedSet<Int>?{
+        var allLesson: SortedSet<Int>? = null
+        try {
+            allLesson = wordDao.getAllLesson().toSortedSet()
+            Log.d("getAllLesson", "Success")
+        }catch (e: Exception){
+            Log.d("getAllLesson", "Exception $e")
+        }
+        return allLesson
+    }
+
+    suspend fun getSomeLessonWords(someLesson: Int): List<WordEntity>?{
+        var listWords: List<WordEntity>? = null
+        try {
+            listWords = wordDao.getSomeLessonWords(someLesson)
+            Log.d("getSomeLessonWords", "Success")
+        }catch (e: Exception){
+            Log.d("getSomeLessonWords", "Exception $e")
+        }
+        return listWords
     }
 }
