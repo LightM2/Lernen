@@ -1,47 +1,35 @@
-package com.example.lernen.ui.addNewWord
+package com.example.lernen.ui.learnNewWords
 
 import android.util.Log
+import android.view.View
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
 import com.example.lernen.repository.MainRepository
 import com.example.lernen.room.WordEntity
-import kotlinx.coroutines.*
 
-class AddNewWordViewModel
+class LearnNewWordsViewModel
 @ViewModelInject
 constructor(
         private val mainRepository: MainRepository,
         @Assisted private val savedStateHandle: SavedStateHandle
-): ViewModel(), Observable {
+): ViewModel(), Observable{
 
-    var newLesson = MutableLiveData<String>()
+    private val TAG = "LearnNewWordsViewModel"
 
-    var newWord = MutableLiveData<String>()
+    private lateinit var wordsList :MutableList<WordEntity>
 
-    var newTranslation = MutableLiveData<String>()
+    init {
 
-    fun addNewWord(){
-        println("addNewWord")
-        Log.d("AddNewWordViewModel", "addNewWord")
-        Log.d("AddNewWordViewModel", "Lesson - ${newLesson.value}")
-        Log.d("AddNewWordViewModel", "Word - ${newWord.value}")
-        Log.d("AddNewWordViewModel", "Translation - ${newTranslation.value}")
-        viewModelScope.launch {
-            mainRepository.setWord(WordEntity(0, newLesson.value!!.toInt(), newWord.value!!, newTranslation.value!!))
-            Log.d("AddNewWordViewModel", "new word added")
-            newLesson.value = ""
-            newWord.value = ""
-            newTranslation.value = ""
-            notifyChange()
+    }
 
-        }
+    fun onClick() {
 
+        Log.d(TAG, "Navigation mast work")
     }
 
     @Transient

@@ -33,5 +33,14 @@
     <fragment
         android:id="@+id/learnFragment"
         android:name="com.example.lernen.ui.learn.LearnFragment"
-        android:label="LearnFragment" />
+        android:label="LearnFragment" >
+        <action
+            android:id="@+id/action_learnFragment_to_learnNewWordsFragment"
+            app:destination="@id/learnNewWordsFragment"
+            app:popUpTo="@id/learnFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/learnNewWordsFragment"
+        android:name="com.example.lernen.ui.learnNewWords.LearnNewWordsFragment"
+        android:label="LearnNewWordsFragment" />
 </navigation>

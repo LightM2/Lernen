@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout 
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="addNewWordViewModel"
-            type="com.example.lernen.ui.addNewWord.AddNewWordViewModel" />
+            name="learnNewWordsViewModel"
+            type="com.example.lernen.ui.learnNewWords.LearnNewWordsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,67 +41,50 @@
             app:layout_constraintGuide_end="6dp"
             android:orientation="horizontal"/>
 
+        <TextView
+            android:id="@+id/translationTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/word_TIL_hint_string"
+            app:layout_constraintTop_toBottomOf="@id/topGL"
+            app:layout_constraintStart_toEndOf="@id/startGL"
+            app:layout_constraintEnd_toStartOf="@id/endGL"/>
+
+        <TextView
+            android:id="@+id/scoreTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/learn_score_string"
+            app:layout_constraintTop_toBottomOf="@id/topGL"
+            app:layout_constraintEnd_toStartOf="@id/endGL"/>
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/lesson_TIL"
+            android:id="@+id/wordTIL"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toStartOf="@+id/endGL"
             app:layout_constraintStart_toStartOf="@+id/startGL"
-            app:layout_constraintTop_toBottomOf="@id/topGL">
+            app:layout_constraintTop_toBottomOf="@id/translationTV">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/lesson_TIL_hint_string"
-                android:text="@={addNewWordViewModel.newLesson}"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/word_TIL"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/endGL"
-            app:layout_constraintStart_toStartOf="@+id/startGL"
-            app:layout_constraintTop_toBottomOf="@id/lesson_TIL">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/word_TIL_hint_string"
-                android:text="@={addNewWordViewModel.newWord}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/translation_TIL"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/endGL"
-            app:layout_constraintStart_toStartOf="@+id/startGL"
-            app:layout_constraintTop_toBottomOf="@id/word_TIL">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/translation_TIL_hint_string"
-                android:text="@={addNewWordViewModel.newTranslation}"/>
+                android:hint="@string/translation_TIL_hint_string"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
-            android:id="@+id/add_word_button"
+            android:id="@+id/okButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_new_word_button_string"
-            android:onClick="@{(v) -> addNewWordViewModel.addNewWord()}"
+            android:text="@string/ok_button_string"
+            android:onClick="@{(view) -> learnNewWordsViewModel.onClick()}"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toStartOf="@+id/endGL"
             app:layout_constraintStart_toStartOf="@+id/startGL"
-            app:layout_constraintTop_toBottomOf="@id/translation_TIL" />
+            app:layout_constraintTop_toBottomOf="@id/wordTIL" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

@@ -26,7 +26,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class AllWordsListFragment
 constructor(
-        private val mainRepository: MainRepository
 ) : Fragment(R.layout.all_words_list_fragment) {
 
     private lateinit var binding: AllWordsListFragmentBinding

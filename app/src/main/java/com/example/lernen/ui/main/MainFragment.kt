@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import com.example.lernen.R
 import com.example.lernen.databinding.MainFragmentBinding
@@ -21,7 +23,6 @@ constructor() : Fragment(R.layout.main_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         Log.d("MainFragment", "Create fragment")
     }

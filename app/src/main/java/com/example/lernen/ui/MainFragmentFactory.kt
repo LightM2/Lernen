@@ -6,6 +6,7 @@ import com.example.lernen.repository.MainRepository
 import com.example.lernen.ui.addNewWord.AddNewWordFragment
 import com.example.lernen.ui.allWordsList.AllWordsListFragment
 import com.example.lernen.ui.learn.LearnFragment
+import com.example.lernen.ui.learnNewWords.LearnNewWordsFragment
 import com.example.lernen.ui.main.MainFragment
 import javax.inject.Inject
 
@@ -27,11 +28,15 @@ constructor(
                 fragment
             }
             AllWordsListFragment::class.java.name -> {
-                val fragment = AllWordsListFragment(mainRepository)
+                val fragment = AllWordsListFragment()
                 fragment
             }
             LearnFragment::class.java.name -> {
-                val fragment = LearnFragment(mainRepository)
+                val fragment = LearnFragment()
+                fragment
+            }
+            LearnNewWordsFragment::class.java.name -> {
+                val fragment = LearnNewWordsFragment(mainRepository)
                 fragment
             }
             else -> super.instantiate(classLoader, className)

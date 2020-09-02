@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,9 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lernen.R
 import com.example.lernen.databinding.LearnFragmentBinding
 import com.example.lernen.repository.MainRepository
-import com.example.lernen.ui.allWordsList.AllWordsListRVAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.all_words_list_fragment.*
 import kotlinx.android.synthetic.main.learn_fragment.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +23,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LearnFragment
 constructor(
-        private val mainRepository: MainRepository
 ) : Fragment(R.layout.learn_fragment) {
     private val TAG = "LearnFragment"
 
@@ -62,6 +58,13 @@ constructor(
                 }
             }
         }
+
+        /*setFragmentResult("lesson", bundleOf("bundleKey" to 1))
+
+        setFragmentResultListener("lesson"){ _, bundle ->
+            val result = bundle.getInt("bundleKey")
+            Log.d(TAG, "setFragmentResultListener - $result")
+        }*/
 
 
         Log.d(TAG, "Create fragment")
