@@ -30,8 +30,14 @@ class LearnNewWordsFragment constructor(
     ): View? {
         val lesson = arguments?.getString("lesson")
         Log.d(TAG, "lesson - $lesson")
+        if (lesson != null) {
+            viewModel.getLessonWords(lesson)
+        }
+
+
         binding = DataBindingUtil.inflate(inflater, R.layout.learn_new_words_fragment, container, false)
         binding.learnNewWordsViewModel = viewModel
+
         return binding.root
     }
 

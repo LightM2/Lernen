@@ -45,7 +45,7 @@
             android:id="@+id/translationTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/word_TIL_hint_string"
+            android:text="@{learnNewWordsViewModel.word}"
             app:layout_constraintTop_toBottomOf="@id/topGL"
             app:layout_constraintStart_toEndOf="@id/startGL"
             app:layout_constraintEnd_toStartOf="@id/endGL"/>
@@ -54,7 +54,7 @@
             android:id="@+id/scoreTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/learn_score_string"
+            android:text="@{learnNewWordsViewModel.scoreLV}"
             app:layout_constraintTop_toBottomOf="@id/topGL"
             app:layout_constraintEnd_toStartOf="@id/endGL"/>
 
@@ -70,7 +70,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/translation_TIL_hint_string"/>
+                android:hint="@string/translation_TIL_hint_string"
+                android:text="@={learnNewWordsViewModel.translation}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

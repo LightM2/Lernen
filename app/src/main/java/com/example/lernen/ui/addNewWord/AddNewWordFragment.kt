@@ -16,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AddNewWordFragment
 constructor(
-    private val mainRepository: MainRepository
 ) : Fragment(R.layout.add_new_word_fragment) {
 
     private lateinit var binding: AddNewWordFragmentBinding
