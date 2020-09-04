@@ -5,16 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lernen.R
 import com.example.lernen.databinding.AllWordsListFragmentBinding
-import com.example.lernen.repository.MainRepository
-import com.example.lernen.ui.addNewWord.AddNewWordViewModel
-import com.example.lernen.ui.learn.LearnViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.all_words_list_fragment.*
 import kotlinx.coroutines.CoroutineScope
@@ -50,11 +46,9 @@ constructor(
         scopeIO.launch {
             val data = viewModel.getDataFromDb()
             scopeMain.launch {
-                if (data != null){
-                    allWordsListRV.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = AllWordsListRVAdapter(data)
-                    }
+                allWordsListRV.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = AllWordsListRVAdapter(data)
                 }
             }
         }

@@ -26,7 +26,7 @@ constructor(
         Log.d("LearnViewModel", "Navigation mast work")
     }
 
-    suspend fun getAllLessonsList(): List<Int>?{
+    suspend fun getAllLessonsList(): List<String>?{
         val lessonsList = mainRepository.getAllLesson()?.toList()
         Log.d(TAG, "getAllLessonsList dane")
         return lessonsList

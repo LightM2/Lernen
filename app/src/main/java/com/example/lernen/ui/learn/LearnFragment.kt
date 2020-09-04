@@ -59,13 +59,6 @@ constructor(
             }
         }
 
-        /*setFragmentResult("lesson", bundleOf("bundleKey" to 1))
-
-        setFragmentResultListener("lesson"){ _, bundle ->
-            val result = bundle.getInt("bundleKey")
-            Log.d(TAG, "setFragmentResultListener - $result")
-        }*/
-
 
         Log.d(TAG, "Create fragment")
     }

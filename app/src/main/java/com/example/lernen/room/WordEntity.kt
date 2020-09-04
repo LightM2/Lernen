@@ -10,11 +10,13 @@ data class WordEntity(
     var id: Int,
 
     @ColumnInfo(name = "lesson")
-    var lesson: Int,
+    var lesson: String,
 
     @ColumnInfo(name = "word")
     var word: String,
 
     @ColumnInfo(name = "translation")
     var translation: String
-)
+):Word {
+    override fun getItemType(): Int = 0
+}

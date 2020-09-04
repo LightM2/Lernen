@@ -23,6 +23,20 @@ constructor(
         return word
     }
 
+    suspend fun getLastWordFromEachLesson(): List<WordEntity>? {
+        var word: List<WordEntity>? = null
+
+        try{
+            word = wordDao.getLastWordFromEachLesson()
+            Log.d("getWords", "Success  $word")
+
+        }catch (e: Exception){
+            Log.d("getWords", "Exception $e")
+        }
+
+        return word
+    }
+
     suspend fun setWord(word: WordEntity){
 
         try {
@@ -34,20 +48,9 @@ constructor(
 
     }
 
-    suspend fun getMaxLesson(): Int?{
-        var maxLesson: Int? = null
-        try {
-            maxLesson = wordDao.getMaxLesson()
-            Log.d("getMaxLesson", "Success")
-        }catch (e: Exception){
-            Log.d("getMaxLesson", "Exception $e")
-        }
 
-        return maxLesson
-    }
-
-    suspend fun getAllLesson(): SortedSet<Int>?{
-        var allLesson: SortedSet<Int>? = null
+    suspend fun getAllLesson(): SortedSet<String>?{
+        var allLesson: SortedSet<String>? = null
         try {
             allLesson = wordDao.getAllLesson().toSortedSet()
             Log.d("getAllLesson", "Success")
@@ -57,7 +60,7 @@ constructor(
         return allLesson
     }
 
-    suspend fun getSomeLessonWords(someLesson: Int): List<WordEntity>?{
+    suspend fun getSomeLessonWords(someLesson: String): List<WordEntity>?{
         var listWords: List<WordEntity>? = null
         try {
             listWords = wordDao.getSomeLessonWords(someLesson)

@@ -52,14 +52,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/add_new_word_button"
+            navigationListener="@{() -> viewModel.onClick()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            navigationListener="@{() -> viewModel.onClick()}"
             android:text="@string/add_new_word_button_string"
             app:layout_constraintBottom_toTopOf="@+id/all_words_list_button"
             app:layout_constraintEnd_toStartOf="@id/endGL"
-            app:layout_constraintStart_toStartOf="@+id/startGL" />
+            app:layout_constraintStart_toStartOf="@id/startGL" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/all_words_list_button"

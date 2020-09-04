@@ -52,7 +52,7 @@ constructor(
 
     fun getLessonWords(lesson: String){
         viewModelScope.launch {
-            listLessonWords = (mainRepository.getSomeLessonWords(lesson.toInt()) as MutableList<WordEntity>?)!!
+            listLessonWords = (mainRepository.getSomeLessonWords(lesson) as MutableList<WordEntity>?)!!
             maxScore = listLessonWords.size
             randomWords()
             notifyPropertyChanged(BR.word)
