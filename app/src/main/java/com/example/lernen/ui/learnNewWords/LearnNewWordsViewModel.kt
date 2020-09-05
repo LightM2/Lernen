@@ -1,6 +1,8 @@
 package com.example.lernen.ui.learnNewWords
 
+import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.Bindable
@@ -14,6 +16,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.lernen.BR
+import com.example.lernen.R
 import com.example.lernen.repository.MainRepository
 import com.example.lernen.room.WordEntity
 import kotlinx.coroutines.launch
@@ -33,6 +36,8 @@ constructor(
     private var maxScore :Int = 0
     private var random = 0
 
+    private val bundle = Bundle()
+
     var translation = MutableLiveData<String>()
 
     private lateinit var listLessonWords: MutableList<WordEntity>
@@ -43,16 +48,28 @@ constructor(
 
 
 
-    fun onClick() {
-        checkAnswer()
-
+    fun onClick(view: View) {
         Log.d(TAG, "onClick mast work")
+
+        val toastText = checkAnswer()
+        if (toastText != null){
+            val toast = Toast.makeText(view.context, toastText, Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.CENTER, 0, 0)
+            toast.show()
+        }else view.findNavController().navigate(R.id.action_learnNewWordsFragment_to_congratsFragment, bundle)
+
+
+
+
 
     }
 
     fun getLessonWords(lesson: String){
+        bundle.putString("lesson", lesson)
         viewModelScope.launch {
-            listLessonWords = (mainRepository.getSomeLessonWords(lesson) as MutableList<WordEntity>?)!!
+            listLessonWords = if (lesson.compareTo("Всі") == 0){
+                mainRepository.getWords() as MutableList<WordEntity>
+            }else mainRepository.getSomeLessonWords(lesson) as MutableList<WordEntity>
             maxScore = listLessonWords.size
             randomWords()
             notifyPropertyChanged(BR.word)
@@ -67,18 +84,19 @@ constructor(
 
     }
 
-    private fun checkAnswer(){
-        if (correctAnswer.compareTo(translation.value!!, ignoreCase = true) == 0){
+    private fun checkAnswer(): String?{
+        return if (correctAnswer.compareTo(translation.value!!, ignoreCase = true) == 0){
             listLessonWords.removeAt(random)
             score++
             scoreLV.value = score.toString()
             translation.value = ""
             if (score < maxScore){
                 randomWords()
-            }else word = "all word"
-            notifyChange()
+                notifyChange()
+                "Правильно"
+            }else null
 
-        }
+        } else "Помилка"
     }
 
     @Transient

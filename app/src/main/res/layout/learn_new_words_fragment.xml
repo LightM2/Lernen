@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ok_button_string"
-            android:onClick="@{(view) -> learnNewWordsViewModel.onClick()}"
+            android:onClick="@{(view) -> learnNewWordsViewModel.onClick(view)}"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toStartOf="@+id/endGL"
             app:layout_constraintStart_toStartOf="@+id/startGL"

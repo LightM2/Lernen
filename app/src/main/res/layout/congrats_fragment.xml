@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.example.lernen.ui.main.MainViewModel" />
+            name="congratsViewModel"
+            type="com.example.lernen.ui.congrats.CongratsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,48 +41,33 @@
             android:orientation="horizontal"/>
 
         <TextView
-            android:id="@+id/logo_text_view"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="@string/logo_tv"
+            android:text="@string/congrats_string"
             android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toStartOf="@id/endGL"
             app:layout_constraintStart_toEndOf="@id/startGL"
             app:layout_constraintTop_toBottomOf="@id/topGL" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_new_word_button"
-            navigationListener="@{() -> viewModel.onClick()}"
+        <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="@string/add_new_word_button_string"
-            app:layout_constraintBottom_toTopOf="@+id/all_words_list_button"
-            app:layout_constraintEnd_toStartOf="@id/endGL"
-            app:layout_constraintStart_toStartOf="@id/startGL" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/all_words_list_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/all_words_list_button_string"
-            navigationListener="@{() -> viewModel.onClick()}"
+            android:text="@string/newly_string"
+            android:onClick="@{(view) -> congratsViewModel.onClick(view, 0)}"
             app:layout_constraintBottom_toTopOf="@+id/bottomGL"
-            app:layout_constraintEnd_toStartOf="@id/endGL"
-            app:layout_constraintStart_toEndOf="@id/startGL"
-            app:layout_constraintTop_toTopOf="@+id/topGL" />
+            app:layout_constraintStart_toEndOf="@id/startGL" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/learn_button"
+        <Button
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            navigationListener="@{() -> viewModel.onClick()}"
-            android:text="@string/learn_button_string"
-            app:layout_constraintEnd_toStartOf="@id/endGL"
-            app:layout_constraintStart_toEndOf="@id/startGL"
-            app:layout_constraintTop_toBottomOf="@+id/all_words_list_button" />
+            android:text="@string/another_lesson_string"
+            android:onClick="@{(view) -> congratsViewModel.onClick(view, 1)}"
+            app:layout_constraintBottom_toTopOf="@+id/bottomGL"
+            app:layout_constraintEnd_toStartOf="@id/endGL" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

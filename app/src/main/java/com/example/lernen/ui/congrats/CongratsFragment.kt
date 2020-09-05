@@ -1,4 +1,4 @@
-package com.example.lernen.ui.learnNewWords
+package com.example.lernen.ui.congrats
 
 import android.os.Bundle
 import android.util.Log
@@ -9,17 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.lernen.R
-import com.example.lernen.databinding.LearnNewWordsFragmentBinding
-import com.example.lernen.repository.MainRepository
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.lernen.databinding.CongratsFragmentBinding
 
-@AndroidEntryPoint
-class LearnNewWordsFragment : Fragment(R.layout.learn_new_words_fragment) {
-    private val TAG = "LearnNewWordsFragment"
+class CongratsFragment: Fragment(R.layout.congrats_fragment) {
 
-    private lateinit var binding: LearnNewWordsFragmentBinding
-
-    private val viewModel: LearnNewWordsViewModel by viewModels()
+    private val TAG = "CongratsFragment"
+    private lateinit var binding: CongratsFragmentBinding
+    private val viewModel: CongratsViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -27,19 +23,14 @@ class LearnNewWordsFragment : Fragment(R.layout.learn_new_words_fragment) {
             savedInstanceState: Bundle?
     ): View? {
         val lesson = arguments?.getString("lesson")
-        Log.d(TAG, "lesson - $lesson")
         if (lesson != null) {
-            viewModel.getLessonWords(lesson)
+            viewModel.lesson = lesson
         }
-
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.learn_new_words_fragment, container, false)
-        binding.learnNewWordsViewModel = viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.congrats_fragment, container, false)
+        binding.congratsViewModel = viewModel
 
         return binding.root
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +38,4 @@ class LearnNewWordsFragment : Fragment(R.layout.learn_new_words_fragment) {
 
         Log.d(TAG, "Create fragment")
     }
-
-
-
 }

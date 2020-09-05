@@ -1,14 +1,14 @@
 package com.example.lernen.ui.addNewWord
 
 import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.widget.Toast
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.lernen.repository.MainRepository
 import com.example.lernen.room.WordEntity
 import kotlinx.coroutines.*
@@ -26,19 +26,29 @@ constructor(
 
     var newTranslation = MutableLiveData<String>()
 
-    fun addNewWord(){
+    fun addNewWord(view: View){
         println("addNewWord")
         Log.d("AddNewWordViewModel", "addNewWord")
         Log.d("AddNewWordViewModel", "Lesson - ${newLesson.value}")
         Log.d("AddNewWordViewModel", "Word - ${newWord.value}")
         Log.d("AddNewWordViewModel", "Translation - ${newTranslation.value}")
         viewModelScope.launch {
-            mainRepository.setWord(WordEntity(0, newLesson.value!!, newWord.value!!, newTranslation.value!!))
-            Log.d("AddNewWordViewModel", "new word added")
-            newLesson.value = ""
-            newWord.value = ""
-            newTranslation.value = ""
-            notifyChange()
+            if (newWord.value != null && newLesson.value != null && newTranslation.value != null){
+                mainRepository.setWord(WordEntity(0, newLesson.value!!, newWord.value!!, newTranslation.value!!))
+                Log.d("AddNewWordViewModel", "new word added")
+                newLesson.value = ""
+                newWord.value = ""
+                newTranslation.value = ""
+                notifyChange()
+                val toast = Toast.makeText(view.context, "Слово додане", Toast.LENGTH_LONG)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.show()
+            }else{
+                val toast = Toast.makeText(view.context, "Не всі полля заповненні", Toast.LENGTH_LONG)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.show()
+            }
+
 
         }
 

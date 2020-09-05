@@ -10,4 +10,7 @@
     <string name="learnAllWordsButton">Всі</string>
     <string name="ok_button_string">ОК</string>
     <string name="learn_score_string">0</string>
+    <string name="congrats_string">Вітання!!!</string>
+    <string name="newly_string">Знову</string>
+    <string name="another_lesson_string">Інший урок</string>
 </resources>

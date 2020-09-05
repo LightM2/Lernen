@@ -48,7 +48,8 @@ constructor(
         val scopeIO = CoroutineScope(Job() + IO)
         val scopeMain = CoroutineScope(Job() + Dispatchers.Main)
         scopeIO.launch {
-            val lessons = viewModel.getAllLessonsList()
+            val lessons: MutableList<String>? = viewModel.getAllLessonsList() as MutableList<String>?
+            lessons?.add("Всі")
             scopeMain.launch {
                 if (lessons != null){
                     allLessonListRV.apply {

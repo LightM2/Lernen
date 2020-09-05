@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_new_word_button_string"
-            android:onClick="@{(v) -> addNewWordViewModel.addNewWord()}"
+            android:onClick="@{(view) -> addNewWordViewModel.addNewWord(view)}"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toStartOf="@+id/endGL"
             app:layout_constraintStart_toStartOf="@+id/startGL"

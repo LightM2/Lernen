@@ -42,5 +42,18 @@
     <fragment
         android:id="@+id/learnNewWordsFragment"
         android:name="com.example.lernen.ui.learnNewWords.LearnNewWordsFragment"
-        android:label="LearnNewWordsFragment" />
+        android:label="LearnNewWordsFragment" >
+        <action
+            android:id="@+id/action_learnNewWordsFragment_to_congratsFragment"
+            app:destination="@id/congratsFragment"
+            app:popUpTo="@id/learnFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/congratsFragment"
+        android:name="com.example.lernen.ui.congrats.CongratsFragment"
+        android:label="CongratsFragment" >
+        <action
+            android:id="@+id/action_congratsFragment_to_learnNewWordsFragment"
+            app:destination="@id/learnNewWordsFragment" />
+    </fragment>
 </navigation>

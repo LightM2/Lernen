@@ -15,8 +15,7 @@ import com.example.lernen.databinding.MainFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment
-constructor() : Fragment(R.layout.main_fragment) {
+class MainFragment :Fragment(R.layout.main_fragment) {
 
     private lateinit var binding: MainFragmentBinding
 
