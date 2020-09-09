@@ -8,7 +8,6 @@
             name="learnBO"
             type="com.example.lernen.ui.learn.LearnBO" />
 
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

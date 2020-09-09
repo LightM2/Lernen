@@ -40,11 +40,11 @@ constructor(
                 newWord.value = ""
                 newTranslation.value = ""
                 notifyChange()
-                val toast = Toast.makeText(view.context, "Слово додане", Toast.LENGTH_LONG)
+                val toast = Toast.makeText(view.context, "Слово додане", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.CENTER, 0, 0)
                 toast.show()
             }else{
-                val toast = Toast.makeText(view.context, "Не всі полля заповненні", Toast.LENGTH_LONG)
+                val toast = Toast.makeText(view.context, "Не всі полля заповненні", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.CENTER, 0, 0)
                 toast.show()
             }

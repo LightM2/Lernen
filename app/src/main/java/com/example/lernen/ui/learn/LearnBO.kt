@@ -15,9 +15,11 @@ class LearnBO(string: String){
     var buttonText = string
 
     fun onClick(view: View) {
-        val bundle = Bundle()
-        bundle.putString("lesson", buttonText)
-        view.findNavController().navigate(R.id.action_learnFragment_to_learnNewWordsFragment, bundle)
+        if (buttonText.compareTo("Слова відсутні") == 1){
+            val bundle = Bundle()
+            bundle.putString("lesson", buttonText)
+            view.findNavController().navigate(R.id.action_learnFragment_to_learnNewWordsFragment, bundle)
+        }
 
         Log.d("LearnBO", "Navigation mast work")
     }

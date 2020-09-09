@@ -24,17 +24,26 @@ constructor(
     }
 
     suspend fun getLastWordFromEachLesson(): List<WordEntity>? {
-        var word: List<WordEntity>? = null
+        var lastWord: List<WordEntity>? = null
 
         try{
-            word = wordDao.getLastWordFromEachLesson()
-            Log.d("getWords", "Success  $word")
+            val wordList = wordDao.get()
+            val lastEntity = wordDao.getLastWordFromEachLesson()
+            val mutableList = mutableListOf<WordEntity>()
+            wordList.forEach { wordEntity ->
+                if (lastEntity.contains(wordEntity)){
+                    mutableList.add(wordEntity)
+                }
+            }
+            lastWord = mutableList
+
+            Log.d("getWords", "Success  $lastWord")
 
         }catch (e: Exception){
             Log.d("getWords", "Exception $e")
         }
 
-        return word
+        return lastWord
     }
 
     suspend fun setWord(word: WordEntity){
@@ -48,11 +57,12 @@ constructor(
 
     }
 
-
-    suspend fun getAllLesson(): SortedSet<String>?{
-        var allLesson: SortedSet<String>? = null
+    suspend fun getAllLesson(): List<String>?{
+        var allLesson: List<String>? = null
         try {
-            allLesson = wordDao.getAllLesson().toSortedSet()
+            val list = wordDao.getAllLesson().toSet()
+            allLesson = list.toList()
+
             Log.d("getAllLesson", "Success")
         }catch (e: Exception){
             Log.d("getAllLesson", "Exception $e")

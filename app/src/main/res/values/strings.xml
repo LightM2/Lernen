@@ -13,4 +13,6 @@
     <string name="congrats_string">Вітання!!!</string>
     <string name="newly_string">Знову</string>
     <string name="another_lesson_string">Інший урок</string>
+    <string name="no_words_string">Слова відсутні</string>
+    <string name="sound_button">sound button</string>
 </resources>

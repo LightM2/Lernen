@@ -26,10 +26,16 @@ constructor(
         Log.d("LearnViewModel", "Navigation mast work")
     }
 
-    suspend fun getAllLessonsList(): List<String>?{
-        val lessonsList = mainRepository.getAllLesson()?.toList()
+    suspend fun getAllLessonsList(): MutableList<String>?{
+        val lessonList = mainRepository.getAllLesson()?.toList()
+        val lessons: MutableList<String>
+        if (lessonList != null && lessonList.isNotEmpty()){
+            lessons = lessonList as MutableList<String>
+            lessons.add("Всі")
+        }else lessons = mutableListOf("Слова відсутні")
+
         Log.d(TAG, "getAllLessonsList dane")
-        return lessonsList
+        return lessons
     }
 
 }

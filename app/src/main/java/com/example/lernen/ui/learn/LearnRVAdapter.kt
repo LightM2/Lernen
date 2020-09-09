@@ -21,7 +21,7 @@ class LearnRVAdapter(private val lessonList: List<String>): RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: LearnRVViewHolder, position: Int) {
-        val lesson = lessonList[position].toString()
+        val lesson = lessonList[position]
         holder.binding.learnBO = LearnBO(lesson)
     }
 

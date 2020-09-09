@@ -1,6 +1,7 @@
 package com.example.lernen.ui.allWordsList
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +19,14 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
 class AllWordsListFragment
 constructor(
-) : Fragment(R.layout.all_words_list_fragment) {
+) : Fragment(R.layout.all_words_list_fragment), TextToSpeech.OnInitListener  {
+
+    private var tts: TextToSpeech? = null
 
     private lateinit var binding: AllWordsListFragmentBinding
 
@@ -41,6 +45,8 @@ constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tts = TextToSpeech(this.context, this)
+
         val scopeIO = CoroutineScope(Job() + IO)
         val scopeMain = CoroutineScope(Job() + Main)
         scopeIO.launch {
@@ -48,7 +54,7 @@ constructor(
             scopeMain.launch {
                 allWordsListRV.apply {
                     layoutManager = LinearLayoutManager(activity)
-                    adapter = AllWordsListRVAdapter(data)
+                    adapter = AllWordsListRVAdapter(data, tts!!)
                 }
             }
         }
@@ -56,6 +62,18 @@ constructor(
 
         Log.d("AllWordsListFragment", "Create fragment")
     }
+
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS){
+            val result = tts!!.setLanguage(Locale.GERMAN)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                Log.e("TTS", "The Language specified is not supported")
+            }
+        }else Log.e("TTS", " Initialization Failed")
+    }
+
 
 
 

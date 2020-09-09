@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="MainButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="MainButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="MainButtonStyleNight" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="MainButtonStyleNight" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white</item>

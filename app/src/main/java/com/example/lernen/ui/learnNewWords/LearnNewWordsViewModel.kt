@@ -53,7 +53,7 @@ constructor(
 
         val toastText = checkAnswer()
         if (toastText != null){
-            val toast = Toast.makeText(view.context, toastText, Toast.LENGTH_LONG)
+            val toast = Toast.makeText(view.context, toastText, Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.CENTER, 0, 0)
             toast.show()
         }else view.findNavController().navigate(R.id.action_learnNewWordsFragment_to_congratsFragment, bundle)

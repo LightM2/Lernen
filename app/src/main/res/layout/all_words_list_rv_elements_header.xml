@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/someLessonTV"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/lesson_TIL_hint_string"
-    />
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="lesson"
+            type="com.example.lernen.room.Lesson" />
+    </data>
+    <TextView
+        android:id="@+id/someLessonTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{lesson.lesson}"
+        android:textAllCaps="true" />
+</layout>
+

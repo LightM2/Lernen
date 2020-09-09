@@ -8,7 +8,7 @@ interface WordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(word: WordEntity): Long
 
-    @Query("SELECT * FROM words ORDER BY lesson")
+    @Query("SELECT * FROM words")
     suspend fun get(): List<WordEntity>
 
     @Query("SELECT * FROM words GROUP BY lesson")

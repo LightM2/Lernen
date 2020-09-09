@@ -1,41 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/allWordsListRvElementsWordMCV"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardElevation="2dp"
-    app:cardUseCompatPadding="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="wordEntity"
+            type="com.example.lernen.room.WordEntity" />
+    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/allWordsListRvElementsWordMCV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-        <TextView
-            android:id="@+id/allWordsListRvElementsWordTV"
-            android:layout_width="wrap_content"
-            android:textStyle="normal"
-            android:layout_height="wrap_content"
-            android:text="@string/word_TIL_hint_string"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/allWordsListRvElementsWordTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{wordEntity.word}"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/soundButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/allWordsListRvElementsTranslationTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textStyle="italic"
-            android:text="@string/translation_TIL_hint_string"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/allWordsListRvElementsWordTV"/>
+            <TextView
+                android:id="@+id/allWordsListRvElementsTranslationTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{wordEntity.translation}"
+                android:textSize="25sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/soundButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/allWordsListRvElementsWordTV" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/soundButton"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:icon="@drawable/sound_icon_light"
+                android:contentDescription="@string/sound_button" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
-</com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
