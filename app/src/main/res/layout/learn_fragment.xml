@@ -2,7 +2,6 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
         <variable
             name="learnViewModel"
@@ -49,16 +48,6 @@
             app:layout_constraintStart_toEndOf="@id/startGL"
             app:layout_constraintEnd_toStartOf="@id/endGL"
             app:layout_constraintBottom_toTopOf="@id/bottomGL"/>
-
-        <!--<Button
-            android:id="@+id/learnAllWordsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{(view) -> learnViewModel.onClick(view)}"
-            app:layout_constraintTop_toBottomOf="@id/allLessonListRV"
-            app:layout_constraintStart_toEndOf="@id/startGL"
-            app:layout_constraintEnd_toStartOf="@id/endGL"
-            android:text="@string/learnAllWordsButton" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

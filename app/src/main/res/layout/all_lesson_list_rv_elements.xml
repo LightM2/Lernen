@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="learnBO"
-            type="com.example.lernen.ui.learn.LearnBO" />
+            name="lesson"
+            type="com.example.lernen.room.Lesson" />
 
     </data>
 
@@ -50,8 +50,7 @@
             app:layout_constraintEnd_toStartOf="@id/endGL"
             app:layout_constraintBottom_toTopOf="@id/bottomGL"
             app:layout_constraintTop_toBottomOf="@id/topGL"
-            android:onClick="@{(view) -> learnBO.onClick(view)}"
-            android:text="@{learnBO.buttonText}" />
+            android:text="@{lesson.lesson}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

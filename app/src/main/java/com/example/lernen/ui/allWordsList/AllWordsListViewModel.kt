@@ -23,20 +23,17 @@ constructor(
     private val TAG = "AllWordsListViewModel"
 
     suspend fun getDataFromDb(): MutableList<Word> {
-        val lastWords = mainRepository.getLastWordFromEachLesson()
-        Log.d(TAG, "lastWords $lastWords")
-        val allWord = mainRepository.getWords()
-        Log.d(TAG, "allWord $allWord")
         val dataList: MutableList<Word> = mutableListOf()
-        if (allWord != null && allWord.isNotEmpty()){
-            dataList.add(Lesson(lastWords!![0].lesson))
-            allWord.forEachIndexed { index, word ->
-                dataList.add(word)
-                if (lastWords.contains(word) && lastWords.last() != word){
-                    dataList.add(Lesson(allWord[index+1].lesson))
-                }
+        val lessonsList = mainRepository.getAllLesson()
+        val allWord = mainRepository.getWords()
+        if (allWord != null && allWord.isNotEmpty() && lessonsList != null){
+            dataList.addAll(lessonsList)
+            allWord.forEach { wordEntity ->
+                val lessonPosition  = dataList.indexOf(Lesson(wordEntity.lesson))
+                dataList.add(lessonPosition + 1, wordEntity)
             }
         }else dataList.add(Lesson("Слова відсутні"))
+
 
 
 

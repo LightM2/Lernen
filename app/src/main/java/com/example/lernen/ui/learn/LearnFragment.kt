@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lernen.R
 import com.example.lernen.databinding.LearnFragmentBinding
 import com.example.lernen.repository.MainRepository
+import com.example.lernen.room.Lesson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.learn_fragment.*
 import kotlinx.coroutines.CoroutineScope
@@ -48,7 +49,7 @@ constructor(
         val scopeIO = CoroutineScope(Job() + IO)
         val scopeMain = CoroutineScope(Job() + Dispatchers.Main)
         scopeIO.launch {
-            val lessons: MutableList<String>? = viewModel.getAllLessonsList()
+            val lessons: MutableList<Lesson>? = viewModel.getAllLessonsList()
             scopeMain.launch {
                 if (lessons != null){
                     allLessonListRV.apply {

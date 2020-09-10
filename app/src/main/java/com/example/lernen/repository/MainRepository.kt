@@ -1,6 +1,7 @@
 package com.example.lernen.repository
 
 import android.util.Log
+import com.example.lernen.room.Lesson
 import com.example.lernen.room.WordDao
 import com.example.lernen.room.WordEntity
 import java.util.*
@@ -23,29 +24,6 @@ constructor(
         return word
     }
 
-    suspend fun getLastWordFromEachLesson(): List<WordEntity>? {
-        var lastWord: List<WordEntity>? = null
-
-        try{
-            val wordList = wordDao.get()
-            val lastEntity = wordDao.getLastWordFromEachLesson()
-            val mutableList = mutableListOf<WordEntity>()
-            wordList.forEach { wordEntity ->
-                if (lastEntity.contains(wordEntity)){
-                    mutableList.add(wordEntity)
-                }
-            }
-            lastWord = mutableList
-
-            Log.d("getWords", "Success  $lastWord")
-
-        }catch (e: Exception){
-            Log.d("getWords", "Exception $e")
-        }
-
-        return lastWord
-    }
-
     suspend fun setWord(word: WordEntity){
 
         try {
@@ -57,11 +35,11 @@ constructor(
 
     }
 
-    suspend fun getAllLesson(): List<String>?{
-        var allLesson: List<String>? = null
+    suspend fun getAllLesson(): List<Lesson>?{
+        var allLesson: List<Lesson>? = null
         try {
             val list = wordDao.getAllLesson().toSet()
-            allLesson = list.toList()
+            allLesson = list.map { Lesson(it) }
 
             Log.d("getAllLesson", "Success")
         }catch (e: Exception){

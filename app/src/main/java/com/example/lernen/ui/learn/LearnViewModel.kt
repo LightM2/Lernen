@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import com.example.lernen.R
 import com.example.lernen.repository.MainRepository
+import com.example.lernen.room.Lesson
 
 class LearnViewModel
 @ViewModelInject
@@ -19,20 +20,14 @@ constructor(
 
     private val TAG = "LearnViewModel"
 
-    fun onClick(view: View) {
 
-        view.findNavController().navigate(R.id.action_learnFragment_to_learnNewWordsFragment)
-
-        Log.d("LearnViewModel", "Navigation mast work")
-    }
-
-    suspend fun getAllLessonsList(): MutableList<String>?{
-        val lessonList = mainRepository.getAllLesson()?.toList()
-        val lessons: MutableList<String>
+    suspend fun getAllLessonsList(): MutableList<Lesson>?{
+        val lessonList = mainRepository.getAllLesson()
+        val lessons: MutableList<Lesson>
         if (lessonList != null && lessonList.isNotEmpty()){
-            lessons = lessonList as MutableList<String>
-            lessons.add("Всі")
-        }else lessons = mutableListOf("Слова відсутні")
+            lessons = lessonList as MutableList<Lesson>
+            lessons.add(Lesson("Всі"))
+        }else lessons = mutableListOf(Lesson("Слова відсутні"))
 
         Log.d(TAG, "getAllLessonsList dane")
         return lessons

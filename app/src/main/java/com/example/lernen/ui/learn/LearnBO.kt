@@ -15,7 +15,9 @@ class LearnBO(string: String){
     var buttonText = string
 
     fun onClick(view: View) {
-        if (buttonText.compareTo("Слова відсутні") == 1){
+        Log.d("LearnBO", "buttonText $buttonText")
+        if (buttonText != "Слова відсутні"){
+            Log.d("LearnBO", "navigate")
             val bundle = Bundle()
             bundle.putString("lesson", buttonText)
             view.findNavController().navigate(R.id.action_learnFragment_to_learnNewWordsFragment, bundle)
